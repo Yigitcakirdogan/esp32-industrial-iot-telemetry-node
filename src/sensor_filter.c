@@ -63,8 +63,12 @@ float median_filter_update(median_filter_t *mf, float raw_sample)
         mf->count++;
     }
 
+    if (mf->count == 0U) {
+        return raw_sample;
+    }
+
     /* Copy active window and insertion-sort (<= 5 elements, zero recursion) */
-    float sorted[MEDIAN_WINDOW_SIZE];
+    float sorted[MEDIAN_WINDOW_SIZE] = {0.0f};
     for (uint8_t i = 0U; i < mf->count; i++) {
         sorted[i] = mf->history[i];
     }

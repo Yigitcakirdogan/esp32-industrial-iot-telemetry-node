@@ -1,3 +1,7 @@
+#ifdef NDEBUG
+   #undef NDEBUG
+   #endif
+   #include <assert.h>
 /**
  * @file    test_telemetry_node.c
  * @author  Yigit Cakirdogan
